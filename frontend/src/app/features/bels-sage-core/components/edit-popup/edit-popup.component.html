@@ -1,0 +1,22 @@
+<div class="popup">
+    <p>Edit property :  {{propertyTemp.nameproperty}}</p>
+
+    <div *ngIf="propertyTemp.possiblevaleproperty !== null">
+        <mat-form-field>
+            <mat-select [(ngModel)]="propertyTemp.valueproperty">
+                <mat-option *ngFor="let value of possibleValues" [value]="value">
+                    {{value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div *ngIf="propertyTemp.possiblevaleproperty === null">
+        <input type="text" [(ngModel)]="propertyTemp.valueproperty">
+    </div>
+    <div class="d-flex justify-content-end">
+        <button style="margin-right: 2.5px" mat-raised-button color="primary" (click)="update()">Update</button>
+    </div>
+
+</div>
+
+

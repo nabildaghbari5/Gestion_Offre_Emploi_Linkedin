@@ -1,0 +1,49 @@
+<body>
+    <div class="container">
+        <header>
+            <h1>Gestion des Entretiens</h1>
+        </header>
+
+        <div class="d-flex gap-5">
+            <input type="text" class="form-control" placeholder="Rechercher par Lieu" [(ngModel)]="searchLieu" />
+            <input type="date" class="form-control" placeholder="Rechercher par Date " [(ngModel)]="searchDate" />
+            <select class="form-control"  [(ngModel)]="selectedStatus">
+              <option value="" disabled selected>Statut</option>
+              <option value="Planifié">Planifié</option>
+              <option value="Terminé">Terminé</option>
+              <option value="Annulé">Annulé</option> 
+            </select>
+            <button class="btn btn-primary"(click)="filterDemande()" >
+              Filtrer
+            </button>
+          </div>  
+          <br><br>
+        <div class="interviews-grid" >
+            <div class="interview-card" *ngFor="let entretien of filteredListEntretien">
+                <span class="interview-status status-planned"  
+                [ngClass]="{
+                  'text-danger': entretien.status === 'Annulé',
+                  'text-warning': entretien.status === 'Planifié',
+                  'text-success': entretien.status === 'Terminé'
+                }">{{ entretien.status }}</span>
+                <div class="interview-date">{{ entretien.date | date:'dd MMM yyyy - HH:mm' }}</div>
+                <div class="candidate-name">{{ entretien.request.nom }} {{ entretien.request.prenom }}</div>
+                <div class="interview-details">
+                    <p>Poste: {{entretien.request.announcement.title}}</p>
+                    <p>Lieu: {{ entretien.lieu }}</p>  
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-edit" (click)="editEntretien(entretien.id)">Modifier</button>
+                    <button class="btn btn-delete" (click)="deleteEntretien(entretien.id)">Supprimer</button>
+                </div>
+            </div>
+            
+        </div>
+        <div *ngIf="filteredListEntretien.length === 0" class="text-center p-3">
+          <p>Aucune entretien disponible pour le moment.</p>
+        </div>
+    </div>
+</body>
+
+<br><br><br><br><br>
+<br><br><br><br><br>

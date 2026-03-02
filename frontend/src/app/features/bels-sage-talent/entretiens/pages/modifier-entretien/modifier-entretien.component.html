@@ -1,0 +1,65 @@
+<br><br><br>
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white">
+        <h6 class="mb-0">Modifier un Entretien</h6>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="entretienForm">
+            <div class="row mb-3">
+              <!-- Date de l'entretien -->
+              <div class="col-md-6 mb-3">
+                <label for="date" class="form-label">Date de l'Entretien</label>
+                <input 
+                  type="datetime-local" 
+                  id="date" 
+                  class="form-control" 
+                  formControlName="date" 
+                  required>
+              </div>
+                 <!-- Statut de l'entretien -->
+                 <div class="col-md-6 mb-3">
+                    <label for="status" class="form-label">Statut</label>
+                    <select 
+                      id="status" 
+                      class="form-control" 
+                      formControlName="status" 
+                      required>
+                      <option value="" disabled selected>Sélectionnez un statut</option>
+                      <option value="Planifié">Planifié</option>
+                      <option value="Terminé">Terminé</option>
+                      <option value="Annulé">Annulé</option>
+                    </select>
+                  </div>
+            </div>
+          
+            <div class="row mb-3">
+           
+          
+              <!-- Lieu de l'entretien -->
+              <div class="col-md-12 mb-3">
+                <label for="lieu" class="form-label">Lieu de l'Entretien</label>
+                <input 
+                  type="text" 
+                  id="lieu" 
+                  class="form-control" 
+                  formControlName="lieu" 
+                  required 
+                  placeholder="Lieu de l'entretien">
+              </div>
+            </div>
+          
+            <!-- Boutons d'action avec alignement centré -->
+            <div class="text-center mt-4">
+              <button type="button" class="btn btn-danger px-4" (click)="annuler()">Annuler</button>
+              &nbsp;&nbsp;
+              <button type="submit" class="btn btn-primary px-4" (click)="modifierEntretien()">Enregistrer</button>
+            </div>
+          </form>
+          
+      </div>
+    </div>
+  </div>
+  <br><br><br><br>
+  <br><br><br><br>

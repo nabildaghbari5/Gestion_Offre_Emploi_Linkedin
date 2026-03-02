@@ -1,0 +1,77 @@
+<div class="d-flex justify-content-between mb-3">
+    <div>
+        <h6 class="text-dark-grey mb-3">{{ 'DEPARTMENT_MANAGEMENT.TITLE' | translate }} ({{ dataSource.length }}):</h6>
+    </div>
+    <div>
+        <button mat-mini-fab color="primary" class="mt-1 me-1" data-bs-toggle="collapse" data-bs-target="#filter-form">
+            <i class="fa-solid fa-filter text-white"></i>
+        </button>
+        <button mat-raised-button color="primary" [routerLink]="'add-department'">
+            {{ 'BUTTONS.ADD_BUTTON_TEXT' | translate  }}
+            <i class="fa-solid fa-circle-plus text-white"></i></button>
+    </div>
+</div>
+
+<div id="filter-form" class="collapse mb-3">
+    <form [formGroup]="filterForm" class="form-container">
+        <mat-form-field class="field">
+            <mat-label>{{'Name' | translate}}</mat-label>
+            <input matInput formControlName="namedepartment">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>{{'Code' | translate}}</mat-label>
+            <input matInput formControlName="codedept">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>{{'Manager' | translate}}</mat-label>
+            <input matInput formControlName="managerdepartement">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>{{'position' | translate}}</mat-label>
+            <input matInput formControlName="currentpositionemployee">
+        </mat-form-field>
+    </form>
+    <div class="d-flex justify-content-center">
+        <button mat-raised-button color="primary" (click)="filterDepartments()">
+            {{ 'Apply Filters' | translate  }}
+        </button>
+    </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef='DEPARTMENT_MANAGEMENT.NAME'>
+        <th mat-header-cell *matHeaderCellDef> {{'DEPARTMENT_MANAGEMENT.NAME' | translate}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.namedepartment}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef='DEPARTMENT_MANAGEMENT.CODE'>
+        <th mat-header-cell *matHeaderCellDef> {{'DEPARTMENT_MANAGEMENT.CODE' | translate}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.codedept}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef='Manager'>
+        <th mat-header-cell *matHeaderCellDef> {{'Manager' | translate}} </th>
+        <td mat-cell
+            *matCellDef="let element"> {{element.managerdepartement?.firstnameemployee + ' ' + element.managerdepartement?.lastnameemployee}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef=Address>
+        <th mat-header-cell *matHeaderCellDef> {{ 'Address' | translate}} </th>
+        <td mat-cell
+            *matCellDef="let element"> {{element.addressedepartment?.cityaddress?.namecity + ', ' + element.addressedepartment?.countryaddress?.countrydescription}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef='Actions'>
+        <th mat-header-cell *matHeaderCellDef> {{'Actions' | translate}} </th>
+        <td mat-cell *matCellDef="let element">
+            <i class="fa-solid fa-trash text-danger clickable" (click)="deleteDepartment(element)"></i>
+            <i class="fa-solid fa-pen   text-blue ms-4 clickable" (click)="goToUpdateCompany(element)"></i>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+

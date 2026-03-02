@@ -1,0 +1,48 @@
+<!-- test-evaluation.component.html -->
+<div class="evaluation-container">
+  <h2>Évaluation du Candidat</h2>
+
+  <form [formGroup]="evaluationForm" (ngSubmit)="submitEvaluation()" class="evaluation-form">
+    <!-- Questions dynamiques -->
+    <div formArrayName="answers">
+      <div *ngFor="let question of questions; let i = index" class="question-block" [formGroupName]="i">
+        <div class="question">
+          <h3>{{ i + 1 }}. {{ question.content }}</h3>
+
+          <ng-container [ngSwitch]="question.type">
+            <!-- Questions avec étoiles -->
+            <div *ngSwitchCase="'RATING'" class="rating">
+              <i *ngFor="let star of stars; let j = index"
+                 class="fas fa-star"
+                 [class.active]="j < getRatingValue(i)"
+                 (click)="setRating(i, j + 1)"
+                 [class.disabled]="evaluationForm.disabled">
+              </i>
+            </div>
+
+            <!-- Questions avec réponse textuelle -->
+            <div *ngSwitchCase="'TEXT'" class="text-answer">
+              <textarea 
+                formControlName="textValue"
+                class="answer-input" 
+                placeholder="Entrez votre réponse ici..."
+                [readonly]="evaluationForm.disabled">
+              </textarea>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bouton de soumission -->
+    <div *ngIf="showButton" class="form-actions">
+      <button 
+        type="submit" 
+        class="submit-btn"
+        [disabled]="loading || !evaluationForm.valid || evaluationForm.disabled">
+        <i class="fas fa-spinner fa-spin" *ngIf="loading"></i>
+        {{ loading ? 'Envoi en cours...' : 'Soumettre l\'évaluation' }}
+      </button>
+    </div>
+  </form>
+</div>

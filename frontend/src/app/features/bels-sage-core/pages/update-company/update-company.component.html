@@ -1,0 +1,25 @@
+<h5 class="mb-4 text-dark-grey">Update Company</h5>
+<form *ngIf="formGroup" [formGroup]="formGroup" class="form" (ngSubmit)="updateCompany()">
+    <mat-form-field class="full-width">
+        <mat-label>{{ 'COMPANY_MANAGEMENT.FISCAL_CODE' | translate }}</mat-label>
+        <input matInput formControlName="fiscalcodecompany">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>{{ 'COMPANY_MANAGEMENT.NAME' | translate }}</mat-label>
+        <input matInput formControlName="namecompany">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>{{ 'COMPANY_MANAGEMENT.TYPE' | translate }}</mat-label>
+        <mat-select formControlName="typecompany" (click)="selectTypeCompanies()">
+            <mat-option *ngFor="let type of typecompanies" [value]="type">{{ type }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <app-address [addressForm]="address"></app-address>
+
+    <button mat-raised-button color="primary" type="submit"
+            class="w-100 d-flex justify-content-center align-items-center mt-5"
+            [disabled]="!formGroup.valid">{{ 'BUTTONS.ADD_COMPANY_BUTTON' | translate }}
+    </button>
+
+</form>
+

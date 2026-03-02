@@ -1,0 +1,117 @@
+<div class="bg-eee">
+    <div class="d-flex justify-content-between mb-3">
+        <div>
+            <h6 class="text-dark-grey mb-3">{{ title | translate }} ({{ dataSource.length }}):</h6>
+        </div>
+        <div>
+            <button mat-mini-fab color="primary" class="mt-1 me-1" data-bs-toggle="collapse" data-bs-target="#filter-form">
+                <i class="fa-solid fa-filter text-white"></i>
+            </button>
+            <button mat-raised-button color="primary" [routerLink]="'add-employee'">
+                {{ 'BUTTONS.ADD_BUTTON_TEXT' | translate  }}
+                <i class="fa-solid fa-circle-plus text-white"></i></button>
+        </div>
+    </div>
+
+    <div id="filter-form" class="collapse mb-3">
+        <form [formGroup]="filterForm" class="form-container">
+            <mat-form-field class="field">
+                <mat-label>{{'EMPLOYEES_MANAGEMENT.FIRST_NAME' | translate}}</mat-label>
+                <input matInput formControlName="firstnameemployee">
+            </mat-form-field>
+            <mat-form-field class="field">
+                <mat-label>{{'EMPLOYEES_MANAGEMENT.LAST_NAME' | translate}}</mat-label>
+                <input matInput formControlName="lastnameemployee">
+            </mat-form-field>
+            <mat-form-field class="field">
+                <mat-label>{{'Gender' | translate}}</mat-label>
+                <input matInput formControlName="genderemployee">
+            </mat-form-field>
+            <mat-form-field class="field">
+                <mat-label>{{'position' | translate}}</mat-label>
+                <input matInput formControlName="currentpositionemployee">
+            </mat-form-field>
+            <mat-form-field class="field">
+                <mat-label>{{'manager' | translate}}</mat-label>
+                <input matInput formControlName="currentmanageremployee">
+            </mat-form-field>
+            <mat-form-field class="field">
+                <mat-label>{{'departmenet' | translate}}</mat-label>
+                <input matInput formControlName="currentdepartmentemployee">
+            </mat-form-field>
+            <mat-form-field class="field">
+                <mat-label>{{'telephone' | translate}}</mat-label>
+                <input matInput formControlName="telephone">
+            </mat-form-field>
+            <mat-form-field class="field">
+                <mat-label>{{'email' | translate}}</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+        </form>
+        <div class="d-flex justify-content-center">
+            <button mat-raised-button color="primary" (click)="filterEmployee()">
+                {{ 'Apply Filters' | translate  }}
+            </button>
+        </div>
+    </div>
+
+    <div class="responsive-table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef='EMPLOYEES_MANAGEMENT.FIRST_NAME'>
+                <th mat-header-cell *matHeaderCellDef> {{'EMPLOYEES_MANAGEMENT.FIRST_NAME' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.firstnameemployee}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef='EMPLOYEES_MANAGEMENT.LAST_NAME'>
+                <th mat-header-cell *matHeaderCellDef> {{'EMPLOYEES_MANAGEMENT.LAST_NAME' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.lastnameemployee}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef='Birthdate'>
+                <th mat-header-cell *matHeaderCellDef> {{'Birthdate' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.birthdateemployee}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef='EMPLOYEES_MANAGEMENT.GENDER'>
+                <th mat-header-cell *matHeaderCellDef> {{'EMPLOYEES_MANAGEMENT.GENDER' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.genderemployee}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef='EMPLOYEES_MANAGEMENT.POSITION'>
+                <th mat-header-cell *matHeaderCellDef> {{'EMPLOYEES_MANAGEMENT.POSITION' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.currentpositionemployee}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef='EMPLOYEES_MANAGEMENT.MANAGER'>
+                <th mat-header-cell *matHeaderCellDef> {{'EMPLOYEES_MANAGEMENT.MANAGER' | translate}} </th>
+                <td mat-cell
+                    *matCellDef="let element"> {{element.currentmanageremployee?.firstnameemployee + " " + element.currentmanageremployee?.lastnameemployee}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef=Address>
+                <th mat-header-cell *matHeaderCellDef> {{ 'Address' | translate}} </th>
+                <td mat-cell
+                    *matCellDef="let element"> {{element.addressemployee?.cityaddress?.namecity + ', ' + element.addressemployee?.countryaddress?.countrydescription}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef='EMPLOYEES_MANAGEMENT.DEPARTMENT'>
+                <th mat-header-cell *matHeaderCellDef> {{ 'EMPLOYEES_MANAGEMENT.DEPARTMENT' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.currentdepartmentemployee?.namedepartment}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef='ACTIONS'>
+                <th mat-header-cell *matHeaderCellDef> {{'ACTIONS' | translate}} </th>
+                <td mat-cell *matCellDef="let element">
+                    <i class="fa-solid fa-trash text-danger clickable" (click)="deleteEmployee(element)"></i>
+                    <i class="fa-solid fa-pen   text-blue ms-4 me-2 clickable "
+                       (click)="goToUpdateEmployee(element)"></i>
+                    <button mat-stroked-button color="primary" (click)="goToAddUser(element.idemployee)">Create User
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+@use "./../../../../assets/colors" as *;
+
+.dialog {
+  padding: 17.5px;
+
+  p {
+    color: $dark-gray;
+  }
+}

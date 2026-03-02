@@ -1,0 +1,88 @@
+<h6 class="mb-4 text-dark-grey">New Employee</h6>
+<form [formGroup]="formGroup" class="form" (ngSubmit)="addEmployee()">
+    <div class="item">
+        <span class="item-heading">Personal Details</span>
+        <div class="d-flex justify-content-center bg-eee">
+            <mat-form-field class="full-width me-2" appearance="outline">
+                <mat-label>First name</mat-label>
+                <input matInput formControlName="firstnameemployee">
+            </mat-form-field>
+            <mat-form-field class="full-width me-2" appearance="outline">
+                <mat-label>Last name</mat-label>
+                <input matInput formControlName="lastnameemployee">
+            </mat-form-field>
+        </div>
+        <div class="d-flex justify-content-center">
+            <mat-form-field class="full-width me-2" appearance="outline">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="genderemployee">
+                    <mat-option *ngFor="let gender of genders" [value]="gender">{{ gender }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="full-width me-2" appearance="outline">
+                <mat-label>Birthdate</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="birthdateemployee">
+                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <span class="item-heading">Address</span>
+            <app-address [addressForm]="address"></app-address>
+        </div>
+    </div>
+
+    <div class="item">
+        <span class="item-heading">Employment Details</span>
+        <div class="d-flex justify-content-center">
+            <mat-form-field class="full-width me-2" appearance="outline">
+                <mat-label>Current Position</mat-label>
+                <input matInput formControlName="currentpositionemployee">
+            </mat-form-field>
+            <mat-form-field class="full-width me-2" appearance="outline">
+                <mat-label>Manager</mat-label>
+                <mat-select formControlName="currentmanageremployee">
+                    <mat-option *ngFor="let manager of managers"
+                                [value]="manager">{{ manager.firstnameemployee }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Department</mat-label>
+            <mat-select formControlName="currentdepartmentemployee">
+                <mat-option *ngFor="let department of departments"
+                            [value]="department">{{ department.namedepartment }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <button mat-raised-button class="mb-2 mt-2" color="primary" type="button" (click)="addContact()">
+        <span class="text-white">Add Contact</span>
+    </button>
+
+    <mat-accordion>
+        <div *ngFor="let contact of contacts.controls; let i = index">
+            <mat-expansion-panel class="mb-2" [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Contact n°: {{ i + 1 }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-contact [formGroup]="getFormGroup(contact)" 
+                             (formValidityChange)="onContactFormValidityChange(i, $event)">
+                </app-contact>
+                <button mat-raised-button color="warn" type="button" (click)="removeContact(i)">
+                    <span class="text-white">Remove Contact</span>
+                </button>
+            </mat-expansion-panel>
+        </div>
+    </mat-accordion>
+
+    <button mat-raised-button color="primary" type="submit"
+            class="w-100 d-flex justify-content-center align-items-center mt-5"
+            [disabled]="formGroup.invalid">
+        <span class="text-white">{{ 'BUTTONS.ADD_COMPANY_BUTTON' | translate }}</span>
+    </button>
+</form>

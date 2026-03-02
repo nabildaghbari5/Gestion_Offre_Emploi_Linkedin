@@ -1,0 +1,128 @@
+<!-- dashboard.component.html -->
+<div class="dashboard-container" *ngIf="!loading && !error && dashboardStats">
+    <!-- Header avec statistiques -->
+    <div class="header">
+        <h1>Tableau de Bord RH</h1>
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-value">{{dashboardStats.activeCandidatures}}</div>
+                <div class="stat-label">Candidatures en cours</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{dashboardStats.plannedInterviews}}</div>
+                <div class="stat-label">Entretiens planifiés</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{dashboardStats.activeAnnouncements}}</div>
+                <div class="stat-label">Offres actives</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{dashboardStats.responseRate | number:'1.0-1'}}%</div>
+                <div class="stat-label">Taux de réponse</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <!-- Candidatures Récentes -->
+        <div class="card">
+            <h2>Dernières Candidatures</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Date</th>
+                        <th>Poste</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let candidature of dashboardStats.recentCandidatures">
+                        <td>{{candidature.nom}} {{candidature.prenom}}</td>
+                        <td>{{formatDate(candidature.dateCreation)}}</td>
+                        <td>{{candidature.posteTitle}}</td>
+                        <td>
+                            <span [class]="'status ' + getStatusClass(candidature.status)">
+                                {{candidature.status}}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Prochains Entretiens -->
+        <div class="card">
+            <h2>Prochains Entretiens</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Candidat</th>
+                        <th>Date</th>
+                        <th>Lieu</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let entretien of dashboardStats.upcomingInterviews">
+                        <td>{{entretien.candidatNom}} {{entretien.candidatPrenom}}</td>
+                        <td>{{formatDateTime(entretien.date)}}</td>
+                        <td>{{entretien.lieu}}</td>
+                        <td>
+                            <span [class]="'status ' + getStatusClass(entretien.status)">
+                                {{entretien.status}}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Technologies Recherchées 
+        <div class="card">
+            <h2>Technologies Recherchées</h2>
+            <div class="progress-container">
+                <div class="progress-item" *ngFor="let tech of dashboardStats.technologyStats">
+                    <div class="progress-label">
+                        <span>{{tech.technology}}</span>
+                        <span>{{tech.percentage | number:'1.0-1'}}%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" [style.width.%]="tech.percentage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+-->
+        <!-- Statut des Annonces 
+        <div class="card">
+            <h2>Statut des Annonces</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Date limite</th>
+                        <th>Candidatures</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let annonce of dashboardStats.activeAnnouncementsList">
+                        <td>{{annonce.title}}</td>
+                        <td>{{formatDate(annonce.dateLimite)}}</td>
+                        <td>{{annonce.nombreCandidatures}}</td>
+                        <td>
+                            <span [class]="'status ' + getStatusClass(annonce.status)">
+                                {{annonce.status}}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>-->
+    </div>
+</div>
+
+<br><br>
+<br><br>
+<br><br>

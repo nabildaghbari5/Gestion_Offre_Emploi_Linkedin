@@ -1,0 +1,43 @@
+<h6 class="mb-4 text-dark-grey">New User:</h6>
+
+<mat-accordion class="displayemployee">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{ formGroup.get('nameusers')?.value }} {{ formGroup.get('surnameusers')?.value }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{ formGroup.get('nameusers')?.value }} {{ formGroup.get('surnameusers')?.value }}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+<form [formGroup]="formGroup" class="form" (ngSubmit)="addUser()">
+    <div class="item">
+        <div class="d-flex justify-content-center">
+            <mat-form-field class="form-element full-width me-2" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="username">
+            </mat-form-field>
+            <mat-form-field class="form-element full-width me-2" appearance="outline">
+                <mat-label>password</mat-label>
+                <input matInput type="password" formControlName="password">
+            </mat-form-field>
+        </div>
+        <div class="d-flex justify-content-center">
+            <mat-form-field class="full-width me-2" appearance="outline">
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="roles">
+                    <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width me-2" appearance="outline">
+                <mat-label>Profile</mat-label>
+                <mat-select formControlName="profileuser">
+                    <mat-option *ngFor="let profile of profiles" [value]="profile">{{ profile }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit"
+            class="w-100 d-flex justify-content-center align-items-center mt-5" [disabled]="!formGroup.valid">Valider
+        </button>
+    </div>
+</form>

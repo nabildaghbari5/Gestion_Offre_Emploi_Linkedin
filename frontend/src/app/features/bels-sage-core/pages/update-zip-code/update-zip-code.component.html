@@ -1,0 +1,33 @@
+<h6 class="mb-4 text-dark-grey">Update ZipCode:</h6>
+<form *ngIf="formGroup" [formGroup]="formGroup" class="form" (ngSubmit)="updateZipcode()">
+    <mat-form-field class="full-width">
+        <mat-label>{{ 'ADD_ADDRESS.COUNTRY' | translate }}</mat-label>
+        <mat-select formControlName="countryzipcode">
+            <mat-option *ngFor="let country of countries"
+                        [value]="country"
+                        (click)="selectCountry()"
+            >{{country.countrydescription}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>{{ 'ADD_ADDRESS.CITY' | translate }}</mat-label>
+        <mat-select formControlName="cityzipcode">
+            <mat-option *ngFor="let city of cities"
+                        [value]="city"
+
+            >{{city.namecity}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-element full-width">
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="locationzipcode">
+    </mat-form-field>
+    <mat-form-field class="form-element full-width">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="codezipcode">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit"
+            class="w-100 d-flex justify-content-center align-items-center mt-5"
+            [disabled]="!formGroup.valid">Valider
+    </button>
+</form>

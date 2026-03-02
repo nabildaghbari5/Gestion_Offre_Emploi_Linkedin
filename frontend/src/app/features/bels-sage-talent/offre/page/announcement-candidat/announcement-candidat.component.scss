@@ -1,0 +1,77 @@
+/* Style de la carte */
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Ajoute un espace de 20px entre les cartes */
+
+  }
+    
+    .card-body {
+      padding: 20px;
+    }
+    
+    .card-title {
+      font-size: 15px;
+      font-weight: bold;
+    }
+    
+    /* Style pour les éléments spécifiques */
+    .card-title .form-group {
+      margin-bottom: 10px;
+    }
+    
+    .card-title .form-group .col-lg-8,
+    .card-title .form-group .col-lg-4 {
+      padding: 5px;
+    }
+    
+    .card-title .form-group .col-lg-4 {
+      text-align: right;
+    }
+    
+    /* Style pour les boutons */
+    .btn-round {
+      border-radius: 20px;
+      padding: 8px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-round:hover {
+      background-color: #0056b3;
+    }
+    
+    /* Style pour le texte des petites tailles */
+    .text-muted {
+      font-size: 14px;
+    }
+    
+    /* Style pour les petites tailles de texte à l'intérieur des boutons */
+    .btn-round small {
+      font-size: 14px;
+    }
+    
+    .job-details {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .job-details li {
+      margin-bottom: 5px;
+    }
+    
+    .job-details li strong {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    
+    .job-details li span {
+      color: #555;
+    }
+      
+
+
+    

@@ -1,0 +1,34 @@
+<h5 class="mb-4 text-dark-grey">{{ 'ADD_COMPANY_TITLE' | translate }}</h5>
+<form [formGroup]="formGroup" class="form" (ngSubmit)="onSubmit(formGroup.value)" *ngIf="!spinner">
+    <div class="item">
+        <span class="item-heading">Company Details</span>
+        <div class="d-flex justify-content-center">
+            <mat-form-field class="full-width me-2" appearance="outline">
+                <mat-label>{{ 'COMPANY_MANAGEMENT.FISCAL_CODE' | translate }}</mat-label>
+                <input matInput formControlName="fiscalcodecompany">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>{{ 'COMPANY_MANAGEMENT.NAME' | translate }}</mat-label>
+                <input matInput formControlName="namecompany">
+            </mat-form-field>
+        </div>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>{{ 'COMPANY_MANAGEMENT.TYPE' | translate }}</mat-label>
+            <mat-select formControlName="typecompany">
+                <mat-option *ngFor="let type of typecompanies" [value]="type">{{ type }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <span class="item-heading">Company Address</span>
+        <app-address [addressForm]="address"></app-address>
+
+        <button mat-raised-button color="primary" type="submit"
+                class="w-100 d-flex justify-content-center align-items-center mt-5"
+                [disabled]="!formGroup.valid">{{ 'BUTTONS.ADD_COMPANY_BUTTON' | translate }}
+        </button>
+    </div>
+
+</form>
+
+<div *ngIf="spinner" class="w-100 d-flex justify-content-center align-items-center mt-5">
+    <mat-spinner></mat-spinner>
+</div>

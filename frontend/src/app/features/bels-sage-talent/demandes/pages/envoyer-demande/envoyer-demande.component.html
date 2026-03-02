@@ -1,0 +1,98 @@
+<br><br>
+<div class="container mt-5">
+    <div *ngIf="!showEvaluation" class="card shadow-sm">
+      <div class="card-header bg-primary text-white">
+        <h6 class="mb-0">Envoyer une Candidature</h6>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="demandeForm">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="Nom" class="form-label">Nom</label>
+              <input 
+                type="text" 
+                id="title" 
+                class="form-control" 
+                name="title"   
+                required 
+                formControlName="nom"
+                placeholder="Nom">
+            </div>
+            <div class="col-md-6">
+              <label for="technologies" class="form-label">Prénom</label>
+              <input 
+                type="text" 
+                id="technologies" 
+                class="form-control"   
+                name="technologies" 
+                required 
+                formControlName="prenom"
+                placeholder="Prenom">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="publicationDate" class="form-label">Cin</label>
+              <input 
+                type="text" 
+                id="publicationDate" 
+                class="form-control" 
+                formControlName="cin"
+                placeholder="Cin"
+                required 
+                >
+            </div>
+            <div class="col-md-6">
+              <label for="endDate" class="form-label">Adresse</label>
+              <input 
+                type="text" 
+                id="endDate" 
+                class="form-control" 
+                name="endDate" 
+                formControlName="adresse"
+                placeholder="Adresse"
+                >
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label">Cv</label>
+              <input 
+              type="file"
+               multiple 
+              value="select"
+              #selectFile 
+              class="form-control"
+               (change)="onFileSelected($event)">       
+            </div>
+            <div class="col-md-6">
+              <label  class="form-label">Lettre de motivation</label>
+              <input 
+              type="file" 
+              multiple 
+              value="select" #selectFile class="form-control"
+              (change)="onFileSelected($event)">
+            </div>
+          </div>
+         <br>
+          <div class="text-center">
+            <button type="submit" class="btn btn-danger px-4" (click)="Anuller()" >Annuler</button> &nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary px-4"  (click)="onSaveDemande()">Suivante</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <app-test-evaluation
+  *ngIf="showEvaluation"
+  [requestId]="requestId"
+  [candidateId]="candidateId"
+  (evaluationSubmitted)="onEvaluationSubmitted($event)"
+  [showButton]="showButton"
+  >
+</app-test-evaluation>
+<br><br><br>
+<br><br>
+

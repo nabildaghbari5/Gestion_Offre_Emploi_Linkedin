@@ -1,0 +1,63 @@
+<br>
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <div class="d-flex gap-2">
+      <button class="btn btn-add btn-primary" routerLink="/features/talent/offre/ajouter">
+        &nbsp; Ajouter une Offre
+      </button>
+    </div>
+  </div>
+</div>
+<div>
+    <div class="d-flex gap-5">
+      <input type="text" class="form-control" placeholder="Rechercher par Titre" [(ngModel)]="searchTitle" />
+      <input type="date" class="form-control" placeholder="Date d'Expiration" [(ngModel)]="searchStartDate"  />
+      <input type="date" class="form-control" placeholder="Date de Création" [(ngModel)]="searchEndDate" />
+      <button class="btn btn-primary" (click)="applyFilter()">
+        Filtrer
+      </button>
+    </div>
+</div>
+<br>
+<div class="datatable">
+  <table class="table table-striped" *ngIf="filteredOffers.length > 0">
+    <thead class="datatable-header">
+      <tr>
+        <th><strong>{{ 'ID' }}</strong></th>
+        <th><strong>{{ 'Titre' }}</strong></th>
+        <th><strong>{{ 'Date de Création' }}</strong></th>
+        <th><strong>{{ 'Date d\'Expiration' }}</strong></th>
+        <th><strong>{{ 'Actions' }}</strong></th>
+      </tr>
+    </thead>
+    <tbody class="text-sm">
+      <tr *ngFor="let offer of filteredOffers">
+        <td>{{ offer.id }}</td>
+        <td>{{ offer.title }}</td>
+        <td>{{ offer.publicationDate }}</td>
+        <td>{{ offer.endDate }}</td>
+        <td class="action-buttons">
+          <button class="btn btn-info btn-sm btn-rounded" (click)="editOffer(offer.id)">
+            <i class="fas fa-edit"></i>
+          </button>&nbsp;
+          <button class="btn btn-danger btn-sm btn-rounded" (click)="deleteOffer(offer.id)">
+            <i class="fas fa-trash-alt"></i>
+          </button>&nbsp;
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="filteredOffers.length === 0" class="text-center p-3">
+    <p>Aucune offre disponible pour le moment.</p>
+  </div>
+</div>
+
+
+  <br><br><br>
+  <br><br><br>
+  <br><br><br>
+  <br><br><br>
+  <br><br><br>
+  <br><br><br>
+
+  

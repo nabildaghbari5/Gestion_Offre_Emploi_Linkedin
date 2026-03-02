@@ -1,0 +1,42 @@
+<form *ngIf="addressForm" [formGroup]="addressForm">
+    <div class="d-flex p-0">
+        <div formGroupName="countryaddress" class="itemA p-0 me-2">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>{{ 'ADD_ADDRESS.COUNTRY' | translate }}</mat-label>
+                <mat-select formControlName="countrydescription">
+                    <mat-option *ngFor="let country of countriesDescription"
+                                [value]="country"
+                                (click)="selectCountry()"
+                    >{{country}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div formGroupName="cityaddress" class="itemA p-0 me-2">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>{{ 'ADD_ADDRESS.CITY' | translate }}</mat-label>
+                <mat-select formControlName="namecity">
+                    <mat-option *ngFor="let city of citiesDescription"
+                                [value]="city"
+                                (click)="selectCity()"
+
+                    >{{city}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="d-flex p-0">
+        <div formGroupName="zipcodeaddress" class="itemA me-2">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>{{ 'ADD_ADDRESS.ZIP_CODE' | translate }}</mat-label>
+                <input matInput formControlName="codezipcode">
+            </mat-form-field>
+        </div>
+        <div class="itemA me-2">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>{{ 'ADD_ADDRESS.BUILDING_NUMBER' | translate }}</mat-label>
+                <input matInput formControlName="buildingnumberaddress">
+            </mat-form-field>
+        </div>
+    </div>
+</form>

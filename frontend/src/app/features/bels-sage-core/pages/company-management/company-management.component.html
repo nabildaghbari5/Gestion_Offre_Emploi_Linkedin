@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-between mb-3">
+    <div>
+        <h6 class="text-dark-grey mb-3">{{ title | translate }} ({{ dataSource.length }}):</h6>
+    </div>
+    <div>
+        <button mat-mini-fab color="primary" class="mt-1 me-1" data-bs-toggle="collapse" data-bs-target="#filter-form">
+            <i class="fa-solid fa-filter text-white"></i>
+        </button>
+        <button mat-raised-button color="primary" [routerLink]="'add-company'">
+            {{ 'BUTTONS.ADD_BUTTON_TEXT' | translate  }}
+            <i class="fa-solid fa-circle-plus text-white"></i></button>
+    </div>
+</div>
+
+<div id="filter-form" class="collapse mb-3">
+    <form [formGroup]="filterForm" class="form-container">
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>{{ 'COMPANY_MANAGEMENT.FISCAL_CODE' | translate }}</mat-label>
+            <input matInput formControlName="fiscalcodecompany">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>{{ 'COMPANY_MANAGEMENT.NAME' | translate }}</mat-label>
+            <input matInput formControlName="namecompany">
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>{{ 'COMPANY_MANAGEMENT.TYPE' | translate }}</mat-label>
+            <mat-select formControlName="typecompany">
+                <mat-option *ngFor="let type of typecompanies" [value]="type">{{ type }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <div class="d-flex justify-content-center">
+        <button mat-raised-button color="primary" (click)="filterCompanies()">
+            {{ 'Apply Filters' | translate  }}
+        </button>
+    </div>
+</div>
+
+
+<div class="responsive-table">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef='COMPANY_MANAGEMENT.FISCAL_CODE'>
+            <th mat-header-cell *matHeaderCellDef> {{'COMPANY_MANAGEMENT.FISCAL_CODE' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.fiscalcodecompany}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef='COMPANY_MANAGEMENT.NAME'>
+            <th mat-header-cell *matHeaderCellDef> {{'COMPANY_MANAGEMENT.NAME' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.namecompany}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef='COMPANY_MANAGEMENT.TYPE'>
+            <th mat-header-cell *matHeaderCellDef> {{'COMPANY_MANAGEMENT.TYPE' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{getTypeCompany(element.typecompany)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef=Address>
+            <th mat-header-cell *matHeaderCellDef> {{ 'Address' | translate}} </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element.addresscompany.cityaddress.namecity + ', ' + element.addresscompany.countryaddress.countrydescription}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef='ACTIONS'>
+            <th mat-header-cell *matHeaderCellDef> {{'ACTIONS' | translate}} </th>
+            <td mat-cell *matCellDef="let element">
+                <i class="fa-solid fa-trash text-danger clickable" (click)="deleteCompany(element)"></i>
+                <i class="fa-solid fa-pen   text-blue ms-4 clickable" (click)="goToUpdateCompany(element)"></i>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+

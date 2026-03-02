@@ -1,0 +1,75 @@
+<div class="container mt-5">
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white">
+        <h6 class="mb-0">Modifier une Offre d'Emploi</h6>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="serviceEntrepriseForm">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="title" class="form-label">Titre de l'Offre</label>
+              <input 
+                type="text" 
+                id="title" 
+                class="form-control" 
+                name="title" 
+                required 
+                formControlName="title"
+                placeholder="Titre de l'offre">
+            </div>
+            <div class="col-md-6">
+              <label for="technologies" class="form-label">Technologies Requises</label>
+              <input 
+                type="text" 
+                id="technologies" 
+                class="form-control"   
+                name="technologies" 
+                required 
+                formControlName="technologies"
+                placeholder="Technologies requises">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="publicationDate" class="form-label">Date de Début</label>
+              <input 
+                type="date" 
+                id="publicationDate" 
+                class="form-control" 
+                formControlName="publicationDate"
+                required 
+                >
+            </div>
+            <div class="col-md-6">
+              <label for="endDate" class="form-label">Date de Fin</label>
+              <input 
+                type="date" 
+                id="endDate" 
+                class="form-control" 
+                name="endDate" 
+                formControlName="endDate"
+                >
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="description" class="form-label">Description de l'Offre</label>
+            <textarea 
+              id="description" 
+              class="form-control" 
+              name="description" 
+              rows="5" 
+              formControlName="description" 
+              placeholder="Décrivez l'offre" 
+              required></textarea>
+          </div>
+         <br>
+          <div class="text-center">
+            <button type="submit" class="btn btn-danger px-4" (click)="Anuller()" >Annuler</button> &nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary px-4"  (click)="modiferOffre()">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br><br>

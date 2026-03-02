@@ -1,0 +1,187 @@
+<br><br>
+<div *ngIf="!detailCandidature">
+  <div class="d-flex gap-5">
+    <input type="text" class="form-control" placeholder="Rechercher par Nom Candidat" [(ngModel)]="searchNom" />
+    <input type="text" class="form-control" placeholder="Rechercher par Prénom Candidat" [(ngModel)]="searchPrenom" />
+    <select class="form-control" [(ngModel)]="selectedStatus">
+      <option value="" disabled selected>Statut</option>
+      <option value="Disqualifié">Disqualifié</option>
+      <option value="Pré-sélection">Pré-sélection</option>
+      <option value="Accepté">Accepté</option>
+    </select>
+    <button class="btn btn-primary" (click)="filterDemande()">
+      Filtrer
+    </button>
+  </div>  
+  <br>
+  <div class="datatable">
+    <table class="table table-striped" *ngIf="filteredListDemande.length > 0">
+      <thead class="datatable-header">
+        <tr>
+          <th><strong>ID</strong></th>
+          <th><strong>Nom Complet</strong></th>
+          <th><strong>Poste</strong></th>
+          <th><strong>Statut</strong></th>
+          <th><strong>Actions</strong></th>
+        </tr>
+      </thead>
+      <tbody class="text-sm">
+        <tr *ngFor="let demande of filteredListDemande">
+          <td>{{demande.id}}</td>
+          <td>{{demande.nom}} {{demande.prenom}}</td>
+          <td>{{demande.announcement.title}}</td>
+          <td [ngClass]="{
+            'text-danger': demande.status === 'Disqualifié',
+            'text-warning': demande.status === 'Pré-sélection',
+            'text-success': demande.status === 'Accepté'
+          }">
+          {{ demande.status }}
+        </td>  
+          <td class="action-buttons">
+            <ng-container class="ml-auto">
+              <button type="button" class="btn btn-light btn-sm btn-rounded" (click)="selectedDemande(demande.id)" ><i class="fas fa-align-left"></i></button>&nbsp;
+              <button  class="dropdown" ngbDropdown placement="bottom-right">
+                <a class="dropdown-toggle card-drop" data-toggle="dropdown" ngbDropdownToggle aria-expanded="false">
+                  <i class="fas fa-cog text-primary font-size-18"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu >  
+                  <li><a  class="dropdown-item"  (click)="updateStatusDemande(demande.id, 'Disqualifié')"><i class="fas fa-times-circle text-danger me-2"></i>Disqualified</a></li>
+                  <li><a  class="dropdown-item" (click)="updateStatusDemande(demande.id, 'Pré-sélection')"> <i class="fas fa-eye text-warning me-2"></i> Pre-screen</a></li>
+                  <li><a  class="dropdown-item" (click)="updateStatusDemande(demande.id, 'Accepté')"><i class="fas fa-check-circle text-success me-2"></i>Accepted</a></li>
+
+                </ul>
+              </button>&nbsp;   
+              <button type="button" class="btn btn-info btn-rounded btn-sm" 
+              (click)="openLaunchInterviewModal(launchInterviewModal, demande.id)"
+              [disabled]="demande.status === 'Accepté' || demande.status === 'Disqualifié'"
+              >
+                <i class="fas fa-play me-1"></i>
+              </button>
+            </ng-container>
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="filteredListDemande.length === 0" class="text-center p-3">
+      <p>Aucune candidature disponible pour le moment.</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="detailCandidature">
+  <div class="card-header bg-primary text-white">
+    <h6 class="mb-0">Détails de la demande</h6>
+  </div>
+  <div *ngIf="demandeSelected">
+    <div class="row">
+      <div class="col-xl-12 col-sm-6">
+        <div class="card">
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="p-4 text-center text-xl-start">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="d-flex flex-column">
+                      <p class="text-muted mb-2 text-truncate" class="mt-1 mb-3 text-primary">Nom complet </p>
+                      <h6>{{demandeSelected.nom}} {{demandeSelected.prenom}}</h6>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="d-flex flex-column">
+                      <p class="text-muted mb-2 text-truncate" class="mt-1 mb-3 text-primary">Titre</p>
+                      <h6>{{demandeSelected.announcement.title}}</h6>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="d-flex flex-column">
+                      <p class="text-muted mb-2 text-truncate" class="mt-1 mb-3 text-primary">Technologies</p>
+                      <h6>{{demandeSelected.announcement.technologies}}</h6>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="d-flex flex-column">
+                      <p class="text-muted mb-2 text-truncate" class="mt-1 mb-3 text-primary">Documents</p>
+                      <p *ngFor="let file of demandeSelected.document">
+                        <i class="mdi mdi-chevron-right text-primary me-1"></i> &nbsp;
+                        <i class="fas fa-cloud-download-alt"></i> &nbsp;
+                        <a [href]="file.url" download="{{file.name}}" class="text-decoration-underline  text-warning">
+                          {{file.name}}
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="d-flex flex-column">
+                      <p class="text-muted mb-2 text-truncate" class="mt-1 mb-3 text-primary">Description offre</p>
+                      <h6>
+                        {{demandeSelected.announcement.description}}</h6>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="d-flex gap-2">
+    <button type="submit" class="btn btn-primary px-4" (click)="retour()">Retour</button>
+    
+    <button 
+      class="btn btn-success" 
+      (click)="showEvaluation = !showEvaluation"
+      *ngIf="demandeSelected.status === 'En attente'"> 
+      {{ showEvaluation ? 'Masquer' : 'Afficher' }} l'évaluation
+    </button>
+  </div>
+<br><br>
+<div  *ngIf="demandeSelected.status === 'En attente'">
+  <app-test-evaluation
+  *ngIf="showEvaluation"
+  [requestId]="demandeSelected.id"
+  [candidateId]="demandeSelected.candidateId"
+  [showButton]="showButton" 
+  >  
+  </app-test-evaluation>
+</div>
+
+</div>
+
+
+<!-- Modal -->
+<ng-template #launchInterviewModal let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Lancer un Entretien</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+      <form>
+          <div class="mb-3">
+              <label for="location" class="form-label">Lieu de l'entretien</label>
+              <input type="text" class="form-control" id="location" [(ngModel)]="interviewLocation" name="location" placeholder="Entrez le lieu de l'entretien" required>
+          </div>
+          <div class="mb-3">
+            <label for="date" class="form-label">Date de l'entretien</label>
+            <input type="datetime-local" class="form-control" id="date" [(ngModel)]="interviewDate"  name="date" required>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="submitEntretien(modal)">Lancer Entretien</button>
+      </form>  
+  </div>
+</ng-template>
+
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>

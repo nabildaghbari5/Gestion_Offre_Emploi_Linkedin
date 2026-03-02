@@ -1,0 +1,30 @@
+.displayemployee {
+    mat-expansion-panel {
+      background-color: purple;
+      color: darkgray;
+      margin-bottom: 10px;
+  
+      mat-expansion-panel-header {
+        background-color: purple;
+        color: white;
+  
+        mat-panel-title {
+          font-weight: bold;
+        }
+  
+        &:hover {
+          background-color: purple;
+        }
+      }
+  
+      p {
+        padding: 16px;
+        background-color: blue;
+        color: darkgray;
+      }
+    }
+  
+    mat-expansion-panel:not(:last-child) {
+      margin-bottom: 10px;
+    }
+}

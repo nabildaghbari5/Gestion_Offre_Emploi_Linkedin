@@ -1,0 +1,37 @@
+version: '3.9'  # Utilisez la dernière version stable de Docker Compose
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: postgres-db  # Ajoutez un nom de conteneur pour faciliter la gestion
+    environment:
+      POSTGRES_DB: keycloak  # Le nom de la base de données
+      POSTGRES_USER: postgres  # L'utilisateur de la base de données
+      POSTGRES_PASSWORD: root  # Le mot de passe pour l'utilisateur postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Volume pour la persistance des données
+    networks:
+      - keycloak-network  # Réseau partagé avec Keycloak
+    ports:
+      - 5432:5432  # Exposez le port PostgreSQL si vous souhaitez y accéder depuis l'extérieur (facultatif)
+
+  keycloak:
+    container_name: keycloak-belSage  # Nom du conteneur Keycloak
+    image: quay.io/keycloak/keycloak:25.0.0  # Image Keycloak version 25.0.0
+    ports:
+      - 8080:8080  # Exposez Keycloak sur le port 8080
+    command: ["start-dev"]  # Commande pour démarrer Keycloak en mode développement
+    environment:
+      KEYCLOAK_ADMIN: admin  # Nom d'utilisateur de l'admin Keycloak
+      KEYCLOAK_ADMIN_PASSWORD: admin  # Mot de passe de l'admin Keycloak
+    depends_on:
+      - postgres  # Assurez-vous que PostgreSQL démarre avant Keycloak
+    networks:
+      - keycloak-network  # Réseau partagé avec PostgreSQL
+
+volumes:
+  postgres_data:  # Volume pour stocker les données PostgreSQL de façon persistante
+
+networks:
+  keycloak-network:
+    driver: bridge  # Réseau en mode bridge, permettant la communication entre les conteneurs

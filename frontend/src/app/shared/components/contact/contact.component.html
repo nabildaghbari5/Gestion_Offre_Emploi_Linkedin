@@ -1,0 +1,48 @@
+<form [formGroup]="formGroup" class="form">
+    <mat-slide-toggle class="full-width example-margin" (change)="checked($event)">
+      Emergency contact
+    </mat-slide-toggle>
+  
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Contact type</mat-label>
+      <mat-select formControlName="typecontact" (selectionChange)="onContactTypeChange($event)">
+        <mat-option *ngFor="let type of typesContact" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field *ngIf="showCountryCode" class="full-width" appearance="outline">
+      <mat-label>Country Code</mat-label>
+      <mat-select formControlName="countrycodecontact">
+        <ngx-mat-select-search [formControl]="searchCountryControl" placeholderLabel="Search Country"></ngx-mat-select-search>
+        <mat-option *ngFor="let countryCode of filteredCountryCodes" [value]="getCountryNameByCode(countryCode)">
+          {{ getCountryNameByCode(countryCode) }} ({{ countryCode }})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>{{ valueContactPlaceholder }}</mat-label>
+      <input matInput formControlName="valuecontact" *ngIf="valueContactPlaceholder === 'Email'; else phoneOrMobileValidator" appEmailValidator>
+      <ng-template #phoneOrMobileValidator>
+        <input matInput formControlName="valuecontact" appPhoneValidator>
+      </ng-template>
+    </mat-form-field>
+  
+    <mat-form-field *ngIf="valueChanged" class="full-width" appearance="outline">
+      <mat-label>Owner Emergency</mat-label>
+      <input matInput formControlName="owneremergency">
+    </mat-form-field>
+  
+    <mat-form-field *ngIf="valueChanged" class="full-width" appearance="outline">
+      <mat-label>Value Emergency contact</mat-label>
+      <input matInput formControlName="valueemergencycontact">
+    </mat-form-field>
+  
+    <mat-form-field *ngIf="valueChanged" class="full-width" appearance="outline">
+      <mat-label>Relation</mat-label>
+      <mat-select formControlName="relation">
+        <mat-option *ngFor="let relation of relations" [value]="relation">{{ relation }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  

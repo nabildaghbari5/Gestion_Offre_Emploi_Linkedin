@@ -1,0 +1,30 @@
+<h6 class="mb-4 text-dark-grey">Update User:</h6>
+<form *ngIf="formGroup" [formGroup]="formGroup" class="form" (ngSubmit)="updateUser()">
+    <mat-form-field class="form-element full-width">
+        <mat-label>User Name</mat-label>
+        <input matInput formControlName="username">
+    </mat-form-field>
+    <mat-form-field class="form-element full-width">
+        <mat-label>User SurName</mat-label>
+        <input matInput formControlName="surnameusers">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>Profile</mat-label>
+        <mat-select formControlName="profileuser">
+            <mat-option *ngFor="let profile of profiles" [value]="profile">{{ profile }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width" (click)="getEmployees()">
+        <mat-label>Associated Employee</mat-label>
+        <mat-select formControlName="associatedemployeeuser">
+            <mat-option *ngFor="let employee of employees" [value]="employee">{{ employee.firstnameemployee +' '+employee.lastnameemployee }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit"
+            class="w-100 d-flex justify-content-center align-items-center mt-5"
+            >Valider
+    </button>
+</form>
+
+

@@ -1,0 +1,140 @@
+{
+  "BUTTONS": {
+    "ADD_BUTTON_TEXT": "Add",
+    "ADD_COMPANY_BUTTON": "Save"
+  },
+  "SIDE_MENU": {
+    "HOME": "Home",
+    "ADMINISTRATION": "Administration",
+    "ADMIN-OPTIONS": {
+      "USER": "Users",
+      "EMPLOYEE": "Employees",
+      "DEPARTMENT": "Departments",
+      "GROUP": "Groups",
+      "COMPANY": "Companies",
+      "PROFILES": "Profiles & functionalities",
+      "CONFIGURATION": "Configuration",
+      "CONF_OPTIONS": {
+        "ADDRESS": "Address management",
+        "SYSTEM": "System properties"
+      }
+    },
+    "TIME": "Time",
+    "ABSENCE": "Absence",
+    "FINANCE": "Finance",
+    "TALENT": "Talent",
+    "ACTIVITY": "Activity",
+    "BOOKING": "Booking"
+  },
+  "ACTIONS": "Actions",
+  "USER_MANAGEMENT": {
+    "TITLE": "Users Management",
+    "USER-NAME": "User Name",
+    "USER_SURNAME": "User SurName",
+    "ASSOCIATED-EMPLOYEE": "Associated Employee",
+    "USER_ENABLED": "User enabled"
+  },
+  "EMPLOYEES_MANAGEMENT": {
+    "TITLE": "Employees Management",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "GENDER": "Gender",
+    "POSITION": "Position",
+    "MANAGER": "Manager",
+    "DEPARTMENT": "Department"
+  },
+  "DEPARTMENT_MANAGEMENT": {
+    "TITLE": "Department Management",
+    "NAME": "Name",
+    "CODE": "Code",
+    "MANAGER": "Manager"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Company management",
+    "FISCAL_CODE": "Fiscal Code",
+    "NAME": "Name",
+    "TYPE": "Type"
+  },
+  "ADD_COMPANY_TITLE": "New company",
+  "ADD_ADDRESS": {
+    "COUNTRY": "Country",
+    "CITY": "City",
+    "ZIP_CODE": "Zip code",
+    "BUILDING_NUMBER": "Building number"
+  },
+  "INTERVIEW_MANAGEMENT": {
+    "TITLE": "Interview management",
+    "TYPE": "Type of interview",
+    "LOCATION": "Location of interview",
+    "DATE": "Date of interview",
+    "DURATION": "Duration of interview",
+    "RESULT": "Result of interview",
+    "FEEDBACK": "Feedback on interview",
+    "DEMANDE": "Job offer request"
+  },
+  "JOBOFFER_MANAGEMENT": {
+    "TITLE": "Job offer management",
+    "SUBJECT": "Subject",
+    "JOBSTANDARDTITLE": "Job Standard Title",
+    "ADRESSBOOKTITLE": "Address Book Title",
+    "COMPANYINTRODUCTION": "Company Introduction",
+    "DESCRIPTION": "Description",
+    "REQUIREMENTS": "Requirements",
+    "BENEFITS": "Benefits",
+    "JOBTYPE": "Job Type",
+    "JOBSOURCE": "Job Source",
+    "LOCATION": "Location",
+    "REGION": "Region",
+    "COMPANY": "Company",
+    "JOBLEVEL": "Job Level",
+    "WORKARRANGEMENT": "Work Arrangement",
+    "VACANCIESNUMBER": "Vacancies Number",
+    "JOBOFFERSTATUS": "Job Offer Status",
+    "PRIORITY": "Priority",
+    "HIRINGMANAGER": "Hiring Manager",
+    "AGENT": "Agent",
+    "SALARYFROM": "Salary From",
+    "SALARYTO": "Salary To",
+    "VISASTATUS": "Visa Status",
+    "HIREDATE": "Hire Date",
+    "STARTDATE": "Start Date",
+    "ENDDATE": "End Date",
+    "EQUIPMENTS": "Equipments",
+    "TAGS": "Tags",
+    "COSTCENTER": "Cost Center"
+},
+"CANDIDATE_MANAGEMENT": {
+  "TITLE": "Candidate management",
+  "FIRSTNAME": "First Name",
+  "LASTNAME": "Last Name",
+  "GENDER": "Gender",
+  "ADRESS": "Address",
+  "EMAIL": "Email",
+  "PHONE": "Phone",
+  "COVERLETTER": "Cover Letter"
+},
+"LINKEDINCONFIG_MANAGEMENT": {
+  "TITLE": "LinkedIn Configuration Management",
+  "CLIENTID": "Client ID",
+  "CLIENTSECRET": "Client Secret",
+  "ACCESSTOKEN": "Access Token"
+},
+"QUESTION_MANAGEMENT": {
+  "TITLE": "Question Management",
+  "QUESTION": "Question",
+  "QUESTIONTYPE": "Question Type"
+},
+"SURVEY_MANAGEMENT": {
+  "TITLE": "Survey Management",
+  "NAMESURVEY": "Survey Name",
+  "STARTDATE": "Start Date",
+  "ENDDATE": "End Date",
+  "SURVEYTYPE": "Survey Type",
+  "QUESTIONS": "Questions"
+},
+"JOBDEMANDE_MANAGEMENT": {
+  "DATEDEMADE": "Date of demande",
+  "STATUS": "Status"
+}
+
+}

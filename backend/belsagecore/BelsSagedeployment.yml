@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: belssagecore
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: belssagecore
+  template:
+    metadata:
+      labels:
+        app: belssagecore
+    spec:
+      containers:
+        - name: belssagecore
+          image: hamidbels001/belssagecore:v13
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8083
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-configmap
+                  key: host
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-configmap
+                  key: name
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  key: postgres_user
+                  name: postgres-credentials
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: postgres_password
+      imagePullSecrets:
+        - name: my-dockerhub-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: belssagecore
+spec:
+  ports:
+    - protocol: TCP
+      port: 8083
+      targetPort: 8083
+  selector:
+    app: belssagecore

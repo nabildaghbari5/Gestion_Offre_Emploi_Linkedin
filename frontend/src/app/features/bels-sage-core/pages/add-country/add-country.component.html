@@ -1,0 +1,23 @@
+<h6 class="mb-4 text-dark-grey">New Country:</h6>
+<form [formGroup]="formGroup" class="form" (ngSubmit)="onSubmit(formGroup.value)" *ngIf="!spinner">
+    <div class="item">
+        <div class="d-flex justify-content-center">
+            <mat-form-field class="form-element full-width me-2" appearance="outline">
+                <mat-label>Code</mat-label>
+                <input matInput formControlName="codecountry">
+            </mat-form-field>
+            <mat-form-field class="form-element full-width" appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="countrydescription">
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit"
+                class="w-100 d-flex justify-content-center align-items-center mt-5"
+                [disabled]="!formGroup.valid">Valider
+        </button>
+    </div>
+</form>
+
+<div *ngIf="spinner" class="w-100 d-flex justify-content-center align-items-center mt-5">
+    <mat-spinner></mat-spinner>
+</div>

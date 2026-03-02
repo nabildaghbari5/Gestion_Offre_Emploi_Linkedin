@@ -1,0 +1,18 @@
+<div class="dialog">
+    <h4>{{data.title}}</h4>
+    <hr>
+    <p>
+        {{data.text}}
+    </p>
+    <div class="d-flex justify-content-end">
+        <div *ngIf="data.error">
+            <button mat-raised-button color="primary" (click)="closeDialog()">Ok</button>
+        </div>
+        <div *ngIf="!data.error">
+            <button style="margin-right: 2.5px" mat-raised-button color="primary" (click)="onClick('NO')">No</button>
+            <button mat-raised-button color="warn" (click)="onClick('YES')">Yes</button>
+        </div>
+    </div>
+
+</div>
+

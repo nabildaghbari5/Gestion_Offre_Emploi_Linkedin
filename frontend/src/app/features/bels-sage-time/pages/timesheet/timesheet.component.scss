@@ -1,0 +1,36 @@
+@use "./../../../../../assets/colors" as *;
+table {
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 10px 10px;
+}
+table, th, td {
+  border: 1px solid;
+}
+th, td{
+  padding: 10px;
+  width: fit-content;
+}
+tr:last-of-type{
+  background-color: #5E91F8;
+}
+.title{
+  background-color: $blue-100;
+  padding: 15px;
+  text-align: center;
+  margin: 10px 0 10px 0;
+}
+.time-box{
+  border: 1px solid gray;
+  border-radius: 15%;
+  padding: 2px;
+}
+.weekend-cell{
+  background-color: gray;
+}
+.subject-action{
+  text-align: center;
+}

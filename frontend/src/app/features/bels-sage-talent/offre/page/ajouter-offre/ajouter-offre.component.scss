@@ -1,0 +1,47 @@
+.container {
+    max-width: 100%; /* Largeur maximale de la carte */
+    margin: 0 auto; /* Centrer la carte horizontalement */
+  }
+  
+  .card {
+    border-radius: 10px; /* Arrondir les coins de la carte */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ajouter une ombre subtile */
+  }
+  
+  .card-header {
+    border-top-left-radius: 5px;
+    border-top-right-radius:5px;
+    padding: 20px;
+  }
+  
+  .card-body {
+    padding: 10px;
+  }
+  
+  .form-label {
+    font-weight: bold; /* Rendre les étiquettes plus visibles */
+  }
+  
+  .form-control {
+    padding: 10px 15px;
+    font-size: 1.1rem; /* Rendre les champs plus grands et lisibles */
+  }
+  
+  .btn-primary {
+    background-color: #0056b3; /* Couleur du bouton */
+    border-color: #0056b3;
+    transition: background-color 0.3s ease; /* Animation de changement de couleur */
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3; /* Couleur du bouton au survol */
+  }
+  
+  textarea.form-control {
+    resize: none; /* Désactiver le redimensionnement des zones de texte */
+  }
+  
+  .text-center {
+    margin-top: 10px;
+  }
+  

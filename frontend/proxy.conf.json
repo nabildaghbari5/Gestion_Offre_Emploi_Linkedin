@@ -1,0 +1,21 @@
+{
+  "/api/core": {
+    "target": "http://localhost:8083",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/api/talent": {
+    "target": "http://localhost:8090",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+
+  "/api/time": {
+    "target": "http://localhost:8093",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

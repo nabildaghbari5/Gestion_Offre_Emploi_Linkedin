@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    height: 80vh; /* Prend toute la hauteur de la page */
+    width: 100%; /* Prend toute la largeur de la page */
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%; 
+    max-width: 1500px; /* Largeur maximale pour éviter que le conteneur soit trop large sur de grands écrans */
+    margin: 0 auto; /* Centre le conteneur horizontalement */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: auto; /* Permet le défilement si le contenu déborde */
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+h1 {
+    color: #333;
+}
+
+.btn-add {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.interviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.interview-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    position: relative;
+}
+
+.interview-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.interview-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.status-planned {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.status-completed {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.interview-date {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.candidate-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.interview-details {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-edit {
+    background-color: #2196F3;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .interviews-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+.d-flex.gap-5 {
+    gap: 15px; /* Ajuste l'espacement entre les éléments */
+}
+
+.form-control {
+    border-radius: 8px; /* Bordures arrondies */
+    border: 1px solid #ced4da;
+    padding: 10px 15px; /* Espace interne plus important */
+    background-color: #f9f9f9; /* Couleur d'arrière-plan légère */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Effet d'ombre légère */
+    transition: all 0.3s ease; /* Transition pour effet de focus */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Bordure bleue au focus */
+    background-color: #fff; /* Fond blanc au focus */
+    box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.25); /* Accentuation de l'ombre */
+}
+
+select.form-control {
+    color: #495057; /* Couleur du texte */
+    cursor: pointer;
+}
+
+.btn-primary {
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Couleur du bouton au survol */
+}

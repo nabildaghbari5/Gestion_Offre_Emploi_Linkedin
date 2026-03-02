@@ -1,0 +1,11 @@
+<h5 class="mb-4 text-dark-grey">New Country:</h5>
+<form *ngIf="formGroup"  [formGroup]="formGroup" class="form" (ngSubmit)="updateCountry()">
+    <mat-form-field class="form-element full-width">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="countrydescription">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit"
+            class="w-100 d-flex justify-content-center align-items-center mt-5"
+            [disabled]="!formGroup.valid">Valider
+    </button>
+</form>

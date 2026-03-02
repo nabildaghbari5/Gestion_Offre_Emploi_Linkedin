@@ -1,0 +1,31 @@
+table td,
+table th{
+  color: var(--dark-grey);
+  padding: 15px;
+  transition: 0.3s;
+}
+
+tbody tr:hover td {
+  background-color: #faf7f7;
+}
+
+thead th{
+  background-color: #faf7f7;
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+
+}
+
+.field {
+  flex: 1 1 auto;
+  margin-right: 2.5px;
+}
+
+@media (max-width: 767px) {
+  .form-container {
+    flex-wrap: wrap;
+  }
+}

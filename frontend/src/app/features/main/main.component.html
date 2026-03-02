@@ -1,0 +1,10 @@
+<app-sidebar></app-sidebar>
+<div class="overlay"
+     [ngClass]="(toggleService.showSidebar && toggleService.isSmallScreen) ? 'show-overlay' : 'hide-overlay'"></div>
+<div class="content bg-eee" [ngClass]="toggleService.showSidebar ? 'sm-content' : 'lg-content'">
+    <app-header></app-header>
+    <app-navbar></app-navbar>
+    <div class="ms-2 me-1 mt-4">
+        <router-outlet></router-outlet>
+    </div>
+</div>

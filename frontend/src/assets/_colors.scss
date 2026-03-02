@@ -1,0 +1,16 @@
+@import "./theme/deep-purple-palette";
+@import "./theme/blue-palette";
+
+$main-purple: map-get($deep-purple-palette, 500);
+$purple-50: map-get($deep-purple-palette, 50);
+$purple-100: map-get($deep-purple-palette, 100);
+$purple-200: map-get($deep-purple-palette, 200);
+
+$main-blue: map-get($blue-palette, 900);
+$blue-50: map-get($blue-palette, 50);
+$blue-100: map-get($blue-palette, 100);
+$blue-200: map-get($blue-palette, 200);
+
+$dark-gray: #424242;
+$light-gray: #757575;
+$extra-light-gray: #BDBDBD;

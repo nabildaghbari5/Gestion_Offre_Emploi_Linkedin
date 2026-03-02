@@ -1,0 +1,32 @@
+<h6 class="mb-4 text-dark-grey">New department:</h6>
+<form [formGroup]="formGroup" class="form" (ngSubmit)="addDepartment()">
+    <div class="item">
+        <span class="item-heading">Department details</span>
+        <div class="d-flex justify-content-center">
+            <mat-form-field class="form-element full-width me-2" appearance="outline">
+                <mat-label>Code</mat-label>
+                <input matInput formControlName="codedept">
+            </mat-form-field>
+            <mat-form-field class="form-element full-width me-2" appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="namedepartment">
+            </mat-form-field>
+        </div>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Manager</mat-label>
+            <mat-select formControlName="managerdepartement">
+                <mat-option *ngFor="let manager of managers"
+                            [value]="manager">{{ manager.firstnameemployee + ' ' + manager.lastnameemployee}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <span class="item-heading">Department Address</span>
+        <div>
+            <app-address [addressForm]="address"></app-address>
+        </div>
+    </div>
+    <button mat-raised-button color="primary" type="submit"
+            class="w-100 d-flex justify-content-center align-items-center mt-5"
+            [disabled]="!formGroup.valid">Valider
+    </button>
+</form>
+

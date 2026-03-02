@@ -1,0 +1,20 @@
+<ul class="main-menu mt-2">
+    <li *ngFor="let item of menu; let i = index">
+        <span [class.selected]="i === selectedIndex"
+              [routerLink]=item.infos.routerLink
+              (click)="selectItem(item.subMenu, i)">{{ item.infos.name| translate }}
+        </span>
+    </li>
+</ul>
+<ul class="sub-menu" *ngIf="subMenu">
+    <li *ngFor="let item of subMenu; let i = index">
+        <span   [class.sBselected]="i === sBselectedIndex"
+                [routerLink]=item.infos.routerLink
+                (click)="selectSubMenuItem(item, i)"
+        >
+               {{ item.infos.name| translate }}
+        </span>
+    </li>
+</ul>
+
+

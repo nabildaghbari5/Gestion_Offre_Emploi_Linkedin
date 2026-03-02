@@ -1,0 +1,36 @@
+
+.d-flex.gap-5 {
+    gap: 15px; /* Ajuste l'espacement entre les éléments */
+}
+
+.form-control {
+    border-radius: 8px; /* Bordures arrondies */
+    border: 1px solid #ced4da;
+    padding: 10px 15px; /* Espace interne plus important */
+    background-color: #f9f9f9; /* Couleur d'arrière-plan légère */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Effet d'ombre légère */
+    transition: all 0.3s ease; /* Transition pour effet de focus */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Bordure bleue au focus */
+    background-color: #fff; /* Fond blanc au focus */
+    box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.25); /* Accentuation de l'ombre */
+}
+
+select.form-control {
+    color: #495057; /* Couleur du texte */
+    cursor: pointer;
+}
+
+.btn-primary {
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Couleur du bouton au survol */
+}

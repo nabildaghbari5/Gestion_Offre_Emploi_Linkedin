@@ -1,0 +1,75 @@
+<h6 class="mb-4 text-dark-grey">New task</h6>
+<form [formGroup]="formGroup" class="form" (ngSubmit)="addTask()">
+    <div class="item">
+        <div class="d-flex justify-content-center">
+            <mat-form-field class="full-width me-2">
+                <mat-label>title</mat-label>
+                <input matInput formControlName="title">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>description</mat-label>
+                <input matInput formControlName="description">
+            </mat-form-field>
+        </div>
+        <div class="d-flex justify-content-center">
+            <mat-form-field class="full-width me-2">
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="sdatepicker" formControlName="startdate">
+                <mat-datepicker-toggle matIconSuffix [for]="sdatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #sdatepicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>End Date</mat-label>
+                <input matInput [matDatepicker]="edatepicker" formControlName="enddate">
+                <mat-datepicker-toggle matIconSuffix [for]="edatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #edatepicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="d-flex justify-content-center">
+            <mat-form-field class="full-width me-2">
+                <mat-label>statues</mat-label>
+                <mat-select formControlName="status">
+                    <mat-option *ngFor="let status of statues" [value]="status">{{ status }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Assigned To</mat-label>
+                <mat-select formControlName="assignedTo">
+                    <mat-option *ngFor="let employee of employees"
+                                [value]="employee">{{ employee.firstnameemployee + ' ' + employee.lastnameemployee }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="d-flex justify-content-center">
+            <mat-form-field class="full-width me-2" appearance="outline">
+                <mat-label>Created By</mat-label>
+                <mat-select formControlName="createdBy">
+                    <mat-option *ngFor="let employee of employees"
+                                [value]="employee">{{ employee.firstnameemployee + ' ' + employee.lastnameemployee }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>priority</mat-label>
+                <mat-select formControlName="priority">
+                    <mat-option *ngFor="let priority of priorities" [value]="priority">{{ priority }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Employee</mat-label>
+            <mat-select formControlName="employee">
+                <mat-option *ngFor="let employee of employees"
+                            [value]="employee">{{ employee.firstnameemployee + ' ' + employee.lastnameemployee }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit"
+                class="w-100 d-flex justify-content-center align-items-center mt-5"
+        >{{ 'BUTTONS.ADD_COMPANY_BUTTON' | translate }}
+        </button>
+    </div>
+</form>
+

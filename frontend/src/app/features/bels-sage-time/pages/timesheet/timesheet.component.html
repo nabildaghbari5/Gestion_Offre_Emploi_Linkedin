@@ -1,0 +1,60 @@
+<span>Welcome to your timesheet</span>
+<select [(ngModel)]="timesheetBase" (change)="setTimeSheet()">
+    <option *ngFor="let timeSheetOption of timeSheetOptions">{{timeSheetOption}}</option>
+</select>
+
+<div class="title">
+    <i class="fa-solid fa-arrow-left" (click)="goToPrevious()"></i>
+    {{monthName}}
+    <i class="fa-solid fa-arrow-right" (click)="goToNext()"></i>
+</div>
+
+<table>
+    <th>
+        Subjects
+    </th>
+    <th *ngFor="let day of days; let i = index" class="text-center">
+        {{day.getDate()}} {{daysNames[i]}}
+    </th>
+    <th>
+        Actions
+    </th>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr *ngFor="let subject of subjects; let i = index">
+        <td>{{subject.description}}</td>
+        <td class="weekend-cell"></td>
+        <td *ngFor="let detail of subject.details; let j = index">
+            <div class="d-flex justify-content-around">
+                <select [(ngModel)]="detail.start" class="time-box">
+                    <option selected="selected" hidden>{{detail.start}}</option>
+                    <option *ngFor="let time of times">{{time}}</option>
+                </select>
+                <select [(ngModel)]="detail.end" class="time-box">
+                    <option selected="selected" hidden>{{detail.end}}</option>
+                    <option *ngFor="let time of times">{{time}}</option>
+                </select>
+            </div>
+        </td>
+        <td class="weekend-cell"></td>
+        <td class="subject-action">
+            <i class="fa-solid fa-trash text-danger clickable" (click)="deleteSubject(i)"></i>
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Total</td>
+        <td></td>
+    </tr>
+</table>
+
+<div class="timesheet-actions">
+    <button (click)="addSubject()">Add Row</button>
+</div>

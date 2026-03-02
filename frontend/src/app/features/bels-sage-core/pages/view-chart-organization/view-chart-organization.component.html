@@ -1,0 +1,27 @@
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+<h5>Organization Chart</h5>
+<p>Organization structure based on company data.</p>
+<div class="chart-container">
+    <p-organizationChart [value]="organizationData"
+                         selectionMode="single"
+                         styleClass="company"
+
+    >
+        <ng-template let-node pTemplate="company">
+            <div class="node-header">{{node.label}}</div>
+            <div class="node-content">
+                <div>{{node.data.name}}</div>
+            </div>
+        </ng-template>
+
+        <ng-template let-node pTemplate="department">
+            <div class="node-header">{{node.label}}</div>
+            <div class="node-content">
+                <div>{{node.data.name}}</div>
+            </div>
+        </ng-template>
+
+    </p-organizationChart>
+
+</div>

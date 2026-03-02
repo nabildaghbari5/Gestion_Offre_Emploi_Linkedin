@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: "Internship management"
+  datasource:
+    url: "jdbc:mysql://localhost:3306/belsagetalent?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC"
+    username: "root"
+    password: ""
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:8080/realms/book-social-network"
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8081
+
+logging:
+  level:
+    tn.cpg.internservice.impl.LinkedInService: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG
+
+linkedin:
+  api:
+    access-token: AQVqAsEgfOHKJcTRHGMaeStav-SFwmv8B2X7DroV5ABitVgv49_rDpIehWwtNXb7W_X0S-PzySDV4VniXLSqFrooU-0bzOrJrgPgzHEmc3QHp7HgL3LKuUnT8HcXYtOaiqdbbluNTbVrju6B-iL0qPDoqcWKmhwKPb2b5CwgXzTpnsndWTjBB8sSi3myQWUaTY-TzWR6aX4QGvVXdI0cxK3qgwcQWcCghOmYvklhspfiOwbtqqaAhqxtN3Fgc6GbQzZ5wQIZGMBvM4d3g26g7YFxBAUZ33MVWucVdGQSaDLMYl8NLoq-u6oSSM4VAdBH7hHq2VK1ndg8hcGn50d3BBH-nIGI2A
+  sub: ex3rYVgvRa

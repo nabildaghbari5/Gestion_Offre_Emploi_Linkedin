@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: belssagehr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: belssagehr
+  template:
+    metadata:
+      labels:
+        app: belssagehr
+    spec:
+      containers:
+        - name: belssagehr
+          image: hamidbels001/belssagehr:least
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: my-dockerhub-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: belssagehr-service
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: belssagehr
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---                  
+apiVersion: v1
+kind: Service
+metadata:
+  name: belssagehr-loadbalancer
+  namespace: default
+spec:
+  type: LoadBalancer
+  selector:
+    app: belssagehr
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

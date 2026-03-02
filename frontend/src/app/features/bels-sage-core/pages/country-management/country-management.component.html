@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-between mb-3">
+    <div>
+        <h6 class="text-dark-grey mb-3">{{ title | translate }} ({{ dataSource.length }}):</h6>
+    </div>
+    <div>
+        <button mat-mini-fab color="primary" class="mt-1 me-1" data-bs-toggle="collapse" data-bs-target="#filter-form">
+            <i class="fa-solid fa-filter text-white"></i>
+        </button>
+        <button mat-raised-button color="primary" [routerLink]="'add-country'">
+            {{ 'BUTTONS.ADD_BUTTON_TEXT' | translate  }}
+            <i class="fa-solid fa-circle-plus text-white"></i></button>
+    </div>
+</div>
+
+<div id="filter-form" class="collapse mb-3">
+    <form [formGroup]="filterForm" class="form-container">
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>Code</mat-label>
+            <input matInput formControlName="codecountry">
+        </mat-form-field>
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="countrydescription">
+        </mat-form-field>
+    </form>
+    <div class="d-flex justify-content-center">
+        <button mat-raised-button color="primary" (click)="filterCountries()">
+            {{ 'Apply Filters' | translate  }}
+        </button>
+    </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef='Code'>
+        <th mat-header-cell *matHeaderCellDef> {{'Code' | translate}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.codecountry}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef='Description'>
+        <th mat-header-cell *matHeaderCellDef> {{'Description' | translate}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.countrydescription}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef='ACTIONS'>
+        <th mat-header-cell *matHeaderCellDef> {{'ACTIONS' | translate}} </th>
+        <td mat-cell *matCellDef="let element">
+            <i class="fa-solid fa-trash text-danger clickable" (click)="deleteCountry(element)"></i>
+            <i class="fa-solid fa-pen   text-blue ms-4 clickable" (click)="goToUpdateCountry(element)"></i>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+

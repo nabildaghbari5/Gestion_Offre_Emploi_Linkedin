@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-between mb-3">
+    <div>
+        <h6 class="text-dark-grey mb-3">{{ "City Management" | translate }} ({{ dataSource.length }}):</h6>
+    </div>
+    <div>
+        <button mat-mini-fab color="primary" class="mt-1 me-1" data-bs-toggle="collapse" data-bs-target="#filter-form">
+            <i class="fa-solid fa-filter text-white"></i>
+        </button>
+        <button mat-raised-button color="primary" [routerLink]="'add-city'">
+            {{ 'BUTTONS.ADD_BUTTON_TEXT' | translate  }}
+            <i class="fa-solid fa-circle-plus text-white"></i></button>
+    </div>
+</div>
+
+<div id="filter-form" class="collapse mb-3">
+    <form [formGroup]="filterForm" class="form-container">
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>City Name</mat-label>
+            <input matInput formControlName="namecity">
+        </mat-form-field>
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="countrycity">
+                <mat-option *ngFor="let country of countries"
+                            [value]="country">{{ country.countrydescription }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <div class="d-flex justify-content-center">
+        <button mat-raised-button color="primary" (click)="filterCities()">
+            {{ 'Apply Filters' | translate  }}
+        </button>
+    </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef='Name'>
+        <th mat-header-cell *matHeaderCellDef> {{'Name' | translate}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.namecity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef='Country'>
+        <th mat-header-cell *matHeaderCellDef> {{'Country' | translate}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.countrycity.countrydescription}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef='ACTIONS'>
+        <th mat-header-cell *matHeaderCellDef> {{'ACTIONS' | translate}} </th>
+        <td mat-cell *matCellDef="let element">
+            <i class="fa-solid fa-trash text-danger clickable" (click)="deleteCity(element)"></i>
+            <i class="fa-solid fa-pen   text-blue ms-4 clickable" (click)="goToUpdateCity(element)"></i>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+

@@ -1,0 +1,25 @@
+<h6 class="mb-4 text-dark-grey">Add city</h6>
+<form [formGroup]="formGroup" class="form" (ngSubmit)="addCity()">
+    <div class="item">
+        <div class="d-flex justify-content-center">
+            <mat-form-field class="full-width me-2" appearance="outline">
+                <mat-label>Country</mat-label>
+                <mat-select formControlName="countrycity">
+                    <mat-option *ngFor="let country of countries"
+                                [value]="country">{{ country.countrydescription }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="namecity">
+            </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary" type="submit"
+                class="w-100 d-flex justify-content-center align-items-center mt-5"
+                [disabled]="!formGroup.valid">{{ 'BUTTONS.ADD_COMPANY_BUTTON' | translate }}
+        </button>
+    </div>
+</form>
+
+

@@ -1,0 +1,144 @@
+{
+  "BUTTONS": {
+    "ADD_BUTTON_TEXT": "Ajouter",
+    "ADD_COMPANY_BUTTON": "Valider"
+  },
+  "SIDE_MENU": {
+    "HOME": "Home",
+    "ADMINISTRATION": "Administration",
+    "ADMIN-OPTIONS": {
+      "USER": "Utilisateurs",
+      "EMPLOYEE": "Employés",
+      "DEPARTMENT": "Département",
+      "GROUP": "Groupe",
+      "COMPANY": "Entreprises",
+      "PROFILES": "Profils et fonctionnalités",
+      "CONFIGURATION": "Configuration",
+      "CONF_OPTIONS": {
+        "ADDRESS": "Gestion adresse",
+        "SYSTEM": "Proprietés système"
+      }
+    },
+    "TIME": "Temps",
+    "ABSENCE": "Absence",
+    "FINANCE": "Finance",
+    "TALENT": "Talent",
+    "ACTIVITY": "Activité",
+    "BOOKING": "Réservation"
+  },
+  "ACTIONS": "Actions",
+  "USER_MANAGEMENT": {
+    "TITLE": "Gestion des utilisateurs",
+    "USER-NAME": "Prénom",
+    "USER_SURNAME": "Nom",
+    "ASSOCIATED-EMPLOYEE": "Employé associé",
+    "USER_ENABLED": "Activé"
+  },
+  "EMPLOYEES_MANAGEMENT": {
+    "TITLE": "Gestion des employés",
+    "FIRST_NAME": "Prénom",
+    "LAST_NAME": "Nom",
+    "GENDER": "Genre",
+    "POSITION": "Occupation",
+    "MANAGER": "Manager",
+    "DEPARTMENT": "Département"
+  },
+  "DEPARTMENT_MANAGEMENT": {
+    "TITLE": "Gestion des départements",
+    "NAME": "Nom",
+    "CODE": "Code",
+    "MANAGER": "Manager"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Gestion d'entreprises",
+    "FISCAL_CODE": "Code Fiscal",
+    "NAME": "Nom",
+    "TYPE": "Type"
+  },
+  "ADD_COMPANY_TITLE": "Nouvelle entreprise",
+  "ADD_ADDRESS": {
+    "COUNTRY": "Pays",
+    "CITY": "Ville",
+    "ZIP_CODE": "Code zip",
+    "BUILDING_NUMBER": "Numéro du bâtiment"
+  },
+  
+    "INTERVIEW_MANAGEMENT": {
+      "TITLE": "Gestion des entretiens",
+      "TYPE": "Type d'entretien",
+      "LOCATION": "Lieu de l'entretien",
+      "DATE": "Date de l'entretien",
+      "DURATION": "Durée de l'entretien",
+      "RESULT": "Résultat de l'entretien",
+      "FEEDBACK": "Retour d'entretien",
+      "DEMANDE": "Demande d'offre d'emploi"
+    },
+    "JOBOFFER_MANAGEMENT": {
+      "TITLE": "Gestion des offres d'emploi",
+      "SUBJECT": "Sujet",
+      "JOBSTANDARDTITLE": "Intitulé de poste standard",
+      "ADRESSBOOKTITLE": "Titre du carnet d'adresses",
+      "COMPANYINTRODUCTION": "Présentation de l'entreprise",
+      "DESCRIPTION": "Description",
+      "REQUIREMENTS": "Exigences",
+      "BENEFITS": "Avantages",
+      "JOBTYPE": "Type de poste",
+      "JOBSOURCE": "Source de l'offre",
+      "LOCATION": "Localisation",
+      "REGION": "Région",
+      "COMPANY": "Entreprise",
+      "JOBLEVEL": "Niveau de poste",
+      "WORKARRANGEMENT": "Organisation du travail",
+      "VACANCIESNUMBER": "Nombre de postes vacants",
+      "JOBOFFERSTATUS": "Statut de l'offre d'emploi",
+      "PRIORITY": "Priorité",
+      "HIRINGMANAGER": "Responsable du recrutement",
+      "AGENT": "Agent",
+      "SALARYFROM": "Salaire de",
+      "SALARYTO": "Salaire à",
+      "VISASTATUS": "Statut du visa",
+      "HIREDATE": "Date d'embauche",
+      "STARTDATE": "Date de début",
+      "ENDDATE": "Date de fin",
+      "EQUIPMENTS": "Équipements",
+      "TAGS": "Étiquettes",
+      "COSTCENTER": "Centre de coûts"
+  },
+  "CANDIDATE_MANAGEMENT": {
+    "TITLE": "Gestion des candidat ",
+    "FIRSTNAME": "Prénom",
+    "LASTNAME": "Nom de famille",
+    "GENDER": "Genre",
+    "ADRESS": "Adresse",
+    "EMAIL": "E-mail",
+    "PHONE": "Téléphone",
+    "COVERLETTER": "Lettre de motivation"
+},
+"LINKEDINCONFIG_MANAGEMENT": {
+  "TITLE": "LinkedIn Configuration Management",
+  "CLIENTID": "Client ID",
+  "CLIENTSECRET": "Client Secret",
+  "ACCESSTOKEN": "Access Token"
+},
+"QUESTION_MANAGEMENT": {
+  "TITLE": "Gestion des Questions",
+  "QUESTION": "Question",
+  "QUESTIONTYPE": "Type de Question"
+},
+"SURVEY_MANAGEMENT": {
+  "TITLE": "Gestion des Enquêtes",
+  "NAMESURVEY": "Nom de l'Enquête",
+  "STARTDATE": "Date de Début",
+  "ENDDATE": "Date de Fin",
+  "SURVEYTYPE": "Type d'Enquête",
+  "QUESTIONS": "Questions"
+},
+"JOBDEMANDE_MANAGEMENT": {
+  "DATEDEMADE": "Date de demande",
+  "STATUS": "Statut"
+}
+
+
+}
+  
+

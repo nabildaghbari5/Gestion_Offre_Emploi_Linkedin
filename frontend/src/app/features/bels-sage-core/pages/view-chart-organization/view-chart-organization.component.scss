@@ -1,0 +1,31 @@
+.node {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 8px;
+}
+
+.header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.body p {
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+table{
+    max-width: 100%;
+}
+:host ::ng-deep table tr {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+

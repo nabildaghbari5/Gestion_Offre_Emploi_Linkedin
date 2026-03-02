@@ -1,0 +1,20 @@
+<h5 class="mb-4 text-dark-grey">update city</h5>
+<form *ngIf="formGroup" [formGroup]="formGroup" class="form" (ngSubmit)="updateCity()">
+    <mat-form-field class="full-width" (click)="getCountries()">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="countrycity">
+            <mat-option *ngFor="let country of countries"
+                        [value]="country"
+            >{{ country.countrydescription }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="namecity">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit"
+            class="w-100 d-flex justify-content-center align-items-center mt-5"
+            [disabled]="!formGroup.valid">{{ 'BUTTONS.ADD_COMPANY_BUTTON' | translate }}
+    </button>
+</form>

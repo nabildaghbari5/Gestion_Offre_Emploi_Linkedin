@@ -1,0 +1,17 @@
+<div class="main-box">
+    <span class="fs-3 fw-light text-blue mb-2">BelsSage</span>
+    <hr>
+    <form [formGroup]="formGroup">
+        <mat-form-field class="full-width">
+            <mat-label>Company</mat-label>
+            <mat-select formControlName="company">
+                <mat-option *ngFor="let company of companies" [value]="company">{{ company.namecompany }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit"
+                class="w-100 d-flex justify-content-center align-items-center mt-5"
+                [disabled]="!formGroup.valid"
+                (click)="onSubmit()">Login
+        </button>
+    </form>
+</div>

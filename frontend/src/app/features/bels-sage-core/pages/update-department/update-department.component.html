@@ -1,0 +1,23 @@
+<h6 class="mb-4 text-dark-grey">Update department:</h6>
+<form *ngIf="formGroup" [formGroup]="formGroup" class="form" (ngSubmit)="updateDepartment()">
+    <mat-form-field class="form-element full-width">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="codedept">
+    </mat-form-field>
+    <mat-form-field class="form-element full-width">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="namedepartment">
+    </mat-form-field>
+    <mat-form-field class="full-width" (click)="setManagers()">
+        <mat-label>Manager</mat-label>
+        <mat-select formControlName="managerdepartement">
+            <mat-option *ngFor="let manager of managers"
+                        [value]="manager">{{ manager?.firstnameemployee + ' ' + manager?.lastnameemployee}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <app-address [addressForm]="address"></app-address>
+    <button mat-raised-button color="primary" type="submit"
+            class="w-100 d-flex justify-content-center align-items-center mt-5"
+            [disabled]="!formGroup.valid">Valider
+    </button>
+</form>

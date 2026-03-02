@@ -1,0 +1,49 @@
+<br><br>
+<div class="custom-container carte-espace" *ngFor="let demande of listDemande">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div>  
+          <div>               
+            <div class="row"> 
+              <div class="col-xl-4">
+                <div class="text-muted mt-4">
+                  <p><i class="mdi mdi-chevron-right text-primary me-1"></i> <strong>Numéro de l'offre :</strong> &nbsp;
+                    {{demande.announcement.id}}</p>
+                  <p><i class="mdi mdi-chevron-right text-primary me-1"></i><strong>Titre : </strong> &nbsp;
+                   {{demande.announcement.title}}</p>
+                </div>
+              </div>
+              <div class="col-xl-4">
+                <div class="text-muted mt-4">
+                  <p><i class="mdi mdi-chevron-right text-primary me-1"></i><strong>Technologies : </strong> &nbsp;
+                    {{demande.announcement.technologies}}</p>
+                  <p><i class="mdi mdi-chevron-right text-primary me-1"></i> <strong>Date d'expiration :</strong> &nbsp;
+                    {{demande.announcement.endDate}}</p>
+                </div>
+              </div>
+              <div class="col-xl-4">
+                <div class="text-muted mt-4">
+                  <p><i class="mdi mdi-chevron-right text-primary me-1"></i><strong>Statut de la candidature :</strong> &nbsp;
+                    <span [ngClass]="{
+                      'text-danger': demande.status === 'Disqualifié',
+                      'text-warning': demande.status === 'Pré-sélection',
+                      'text-success': demande.status === 'Accepté'
+                    }">
+                    {{ demande.status }}
+                  </span>
+                  <p><i class="mdi mdi-chevron-right text-primary me-1"></i> <strong>Date de demande :</strong> &nbsp;
+                    {{demande.dateCreation}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br>
